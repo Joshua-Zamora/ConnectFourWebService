@@ -3,7 +3,7 @@
 class Smart extends Strategy {
     function __construct()
     {
-        $strategy = "Smart";
+        $this->strategy = "Smart";
     }
 
     function GetComputedCoordinates($board) {
