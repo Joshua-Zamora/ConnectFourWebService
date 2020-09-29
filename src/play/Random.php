@@ -6,11 +6,11 @@ class Random extends Strategy {
         $this->strategy = "Random";
     }
 
-    function GetComputedCoordinates() {
+    function GetComputedCoordinates($board) {
 
         do {
             $xCoordinate = rand(0, 6);
-        } while(!isValidCoordinate($xCoordinate));
+        } while(!$board->isValidCoordinate($xCoordinate));
 
         return $xCoordinate;
     }
