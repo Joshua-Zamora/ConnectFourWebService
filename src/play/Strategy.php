@@ -1,6 +1,5 @@
 <?php
 
-class Strategy {
-    public $strategy = "";
-
+abstract class Strategy {
+    abstract function GetComputedCoordinates($board);
 }

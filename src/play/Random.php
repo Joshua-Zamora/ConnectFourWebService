@@ -1,9 +1,8 @@
 <?php
 
 class Random extends Strategy {
-    function __construct()
-    {
-        $this->strategy = "Random";
+    function __construct() {
+
     }
 
     function GetComputedCoordinates($board) {

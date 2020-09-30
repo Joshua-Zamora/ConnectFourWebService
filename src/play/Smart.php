@@ -1,9 +1,8 @@
 <?php
 
 class Smart extends Strategy {
-    function __construct()
-    {
-        $this->strategy = "Smart";
+    function __construct() {
+
     }
 
     function GetComputedCoordinates($board) {
@@ -31,11 +30,9 @@ class Smart extends Strategy {
             for ($j = 0; $j < 6; $j++) {
                 if ($board[$i    ][$j] == 2 &&
                     $board[$i + 1][$j] == 2 &&
-                    $board[$i + 2][$j] == 2 &&
-                    $board[$i + 3][$j] == 2) return $j;
+                    $board[$i + 2][$j] == 2) return $j;
 
-                elseif ($board[$i    ][$j] == 1 &&
-                        $board[$i + 1][$j] == 1 &&
+                elseif ($board[$i + 1][$j] == 1 &&
                         $board[$i + 2][$j] == 1 &&
                         $board[$i + 3][$j] == 1) return $j;
             }
