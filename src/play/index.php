@@ -15,28 +15,28 @@ function main() {
 
 
     if (!$board->isValidCoordinate(MOVE)) {
-        echo '{"response": false, "reason": "Column is full"}';
+        echo json_encode('{"response": false, "reason": "Column is full"}');
         exit;
     }
 
     $board->insertDisc(MOVE, 1);
 
     if ($board->checkForWinningRow(1)) {
-        echo '{"response": true,
+        echo json_encode('{"response": true,
                "ack_move": {
                "slot": '. MOVE .', 
                "isWin": true,
                "isDraw": false,
-               "row": []}';
+               "row": []}');
         exit;
     }
     elseif ($board->boardIsFull()) {
-        echo '{"response": true,
+        echo json_encode('{"response": true,
                "ack_move": {
                "slot": '. MOVE .', 
                "isWin": false,
                "isDraw": true,
-               "row": []}';
+               "row": []}');
         exit;
     }
 
@@ -51,7 +51,7 @@ function main() {
     $board->insertDisc($computedMove, 2);
 
     if ($board->checkForWinningRow(2)) {
-        echo '{"response": true,
+        echo json_encode('{"response": true,
                "ack_move": {
                "slot": '. MOVE .', 
                "isWin": false,
@@ -61,11 +61,11 @@ function main() {
                "slot": '. $computedMove . ', 
                "isWin": true, 
                "isDraw": false, 
-               "row": []}}';
+               "row": []}}');
         exit;
     }
     elseif ($board->boardIsFull()) {
-        echo '{"response": true,
+        echo json_encode('{"response": true,
                "ack_move": {
                "slot": '. MOVE .', 
                "isWin": false,
@@ -75,7 +75,7 @@ function main() {
                "slot": '. $computedMove . ', 
                "isWin": false, 
                "isDraw": true, 
-               "row": []}}';
+               "row": []}}');
         exit;
     }
 
@@ -85,19 +85,19 @@ function main() {
 
 function checkPid($files) {
     if (PID == "") {
-        echo '{"response": false, "reason": "Pid not specified"}';
+        echo json_encode('{"response": false, "reason": "Pid not specified"}');
         exit;
     }
     elseif (MOVE == "") {
-        echo '{"response": false, "reason": "Move not specified"}';
+        echo json_encode('{"response": false, "reason": "Move not specified"}');
         exit;
     }
     elseif (!array_search(PID, $files)) {
-        echo '{"response": false, "reason": "Unknown pid"}';
+        echo json_encode('{"response": false, "reason": "Unknown pid"}');
         exit;
     }
     elseif (MOVE < 0 || MOVE > 6) {
-        echo '{"response": false, "reason": "Invalid slot, ' . MOVE . '"}';
+        echo json_encode('{"response": false, "reason": "Invalid slot, ' . MOVE . '"}');
         exit;
     }
 }
