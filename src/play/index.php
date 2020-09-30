@@ -1,104 +1,99 @@
 <?php
-define('PID', htmlspecialchars($_GET["pid"]));
-define('MOVE', htmlspecialchars($_GET["move"]));
+define('PID', "pid");
+define('MOVE', "move");
 define('WRITE', dirname(dirname(__FILE__))."/writable/");
 
 main();
 
 function main() {
     $files = scandir(WRITE, 1);
-    checkPid($files);
+    $acknowledgeMessage = array();
+
+    if (!isset($_GET[PID])) {
+        $acknowledgeMessage['response'] = false;
+        $acknowledgeMessage['reason'] = "Pid not specified";
+    }
+    elseif (!isset($_GET[MOVE])) {
+        $acknowledgeMessage['response'] = false;
+        $acknowledgeMessage['reason'] = "Move not specified";
+    }
+    elseif (!array_search($_GET[PID], $files)) {
+        $acknowledgeMessage['response'] = false;
+        $acknowledgeMessage['reason'] = "Unknown pid";
+    }
+    elseif ($_GET[MOVE] < 0 || $_GET[MOVE] > 6) {
+        $acknowledgeMessage['response'] = false;
+        $acknowledgeMessage['reason'] = "Invalid slot, ' . MOVE . '";
+    }
+
+    if ($acknowledgeMessage['response'] == false) {
+        echo json_encode($acknowledgeMessage);
+        exit;
+    }
 
     $board = new Board();
 
-    $board->board = json_decode(PID . 'txt');
+    $board->board = json_decode(WRITE . $_GET[PID] . 'txt');
 
-
-    if (!$board->isValidCoordinate(MOVE)) {
-        echo json_encode('{"response": false, "reason": "Column is full"}');
+    if (!$board->isValidCoordinate($_GET[MOVE])) {
+        $acknowledgeMessage['response'] = false;
+        $acknowledgeMessage['reason'] = "Column is full";
+        echo json_encode($acknowledgeMessage);
         exit;
     }
 
-    $board->insertDisc(MOVE, 1);
+    $board->insertDisc($_GET[MOVE], 1);
+
+    $acknowledgeMessage['response'] = true;
+    $acknowledgeMessage['ack_move'] = array();
+    $acknowledgeMessage['ack_move']['slot'] = $_GET[MOVE];
+    $acknowledgeMessage['ack_move']['isWin'] = false;
+    $acknowledgeMessage['ack_move']['isDraw'] = false;
+    $acknowledgeMessage['ack_move']['row'] = '[]';
 
     if ($board->checkForWinningRow(1)) {
-        echo json_encode('{"response": true,
-               "ack_move": {
-               "slot": '. MOVE .', 
-               "isWin": true,
-               "isDraw": false,
-               "row": []}');
+        $acknowledgeMessage['ack_move']['isWin'] = true;
+
+        echo json_encode($acknowledgeMessage);
         exit;
     }
     elseif ($board->boardIsFull()) {
-        echo json_encode('{"response": true,
-               "ack_move": {
-               "slot": '. MOVE .', 
-               "isWin": false,
-               "isDraw": true,
-               "row": []}');
+        $acknowledgeMessage['ack_move']['isDraw'] = true;
+
+        echo json_encode($acknowledgeMessage);
         exit;
     }
 
     $random = new Random();
     $smart = new Smart();
 
-    if (PID[0] == "R")
+    if ($_GET[PID][0] == "R")
         $computedMove = $random->GetComputedCoordinates($board);
     else
         $computedMove = $smart->GetComputedCoordinates($board);
 
     $board->insertDisc($computedMove, 2);
 
+    $acknowledgeMessage['move'] = array();
+    $acknowledgeMessage['move']['slot'] = $computedMove;
+    $acknowledgeMessage['move']['isWin'] = false;
+    $acknowledgeMessage['move']['isDraw'] = false;
+    $acknowledgeMessage['move']['row'] = '[]';
+
     if ($board->checkForWinningRow(2)) {
-        echo json_encode('{"response": true,
-               "ack_move": {
-               "slot": '. MOVE .', 
-               "isWin": false,
-               "isDraw": false,
-               "row": []}
-               "move": {
-               "slot": '. $computedMove . ', 
-               "isWin": true, 
-               "isDraw": false, 
-               "row": []}}');
+        $acknowledgeMessage['move']['isWin'] = true;
+
+        echo json_encode($acknowledgeMessage);
         exit;
     }
     elseif ($board->boardIsFull()) {
-        echo json_encode('{"response": true,
-               "ack_move": {
-               "slot": '. MOVE .', 
-               "isWin": false,
-               "isDraw": false,
-               "row": []}
-               "move": {
-               "slot": '. $computedMove . ', 
-               "isWin": false, 
-               "isDraw": true, 
-               "row": []}}');
+        $acknowledgeMessage['move']['isDraw'] = false;
+
+        echo json_encode($acknowledgeMessage);
         exit;
     }
 
-    file_put_contents(PID . 'txt', json_encode($board));
+    file_put_contents(WRITE . $_GET[PID] . 'txt', json_encode($board));
 
+    echo json_encode($acknowledgeMessage);
 }
-
-function checkPid($files) {
-    if (PID == "") {
-        echo json_encode('{"response": false, "reason": "Pid not specified"}');
-        exit;
-    }
-    elseif (MOVE == "") {
-        echo json_encode('{"response": false, "reason": "Move not specified"}');
-        exit;
-    }
-    elseif (!array_search(PID, $files)) {
-        echo json_encode('{"response": false, "reason": "Unknown pid"}');
-        exit;
-    }
-    elseif (MOVE < 0 || MOVE > 6) {
-        echo json_encode('{"response": false, "reason": "Invalid slot, ' . MOVE . '"}');
-        exit;
-    }
-}
-
