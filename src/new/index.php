@@ -12,11 +12,11 @@ function main() {
 
     if (!array_key_exists(STRATEGY, $strategies)) {
         $info['response'] = false;
-        $info['reason'] = "Strategy not specified";
+        $info['reason'] = "Strategy unknown";
     }
     elseif (STRATEGY == "") {
         $info['response'] = false;
-        $info['reason'] = "Strategy unknown";
+        $info['reason'] = "Strategy not specified";
     }
    else {
        $info['response'] = true;
