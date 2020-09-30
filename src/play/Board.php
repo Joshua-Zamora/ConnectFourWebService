@@ -37,7 +37,7 @@ class Board
     }
 
     function checkForWinningRow($player) {
-        for ($i = 0; $i < 5; $i++) {     // Checks Horizontal groups
+        for ($i = 0; $i < 6; $i++) {     // Checks Horizontal groups
             for ($j = 0; $j < 3; $j++) {
                 if ($this->board[$i][$j    ] == $player &&
                     $this->board[$i][$j + 1] == $player &&
@@ -55,7 +55,7 @@ class Board
             }
         }
 
-        for ($i = 3; $i < 5; $i++) {     // Checks Ascending diagonal groups
+        for ($i = 3; $i < 6; $i++) {     // Checks Ascending diagonal groups
             for ($j = 0; $j < 3; $j++) {
                 if ($this->board[$i    ][$j    ] == $player &&
                     $this->board[$i - 1][$j + 1] == $player &&
