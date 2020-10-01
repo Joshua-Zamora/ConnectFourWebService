@@ -96,5 +96,7 @@ function main() {
     }
 
     echo nl2br("\n" . json_encode($acknowledgeMessage) . "\n\n");
-    echo nl2br(json_encode($board->board));
+
+    foreach ($board->board as $row)
+        echo nl2br(json_encode($row) . "\n");
 }
