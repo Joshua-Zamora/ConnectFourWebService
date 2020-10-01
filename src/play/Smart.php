@@ -76,8 +76,10 @@ class Smart extends Strategy {
             }
         }
 
-        for ($xCoordinate = 0; $xCoordinate < 7; $xCoordinate++) {
-            if ($board->board[0][$xCoordinate] == 0) return $xCoordinate;
-        }
+        do {
+            $xCoordinate = rand(0, 6);
+        } while ($board->board[0][$xCoordinate] != 0);
+
+        return $xCoordinate;
     }
 }
