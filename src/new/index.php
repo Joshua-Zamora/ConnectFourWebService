@@ -22,13 +22,13 @@ function main() {
        $info['response'] = true;
        $board = new Board();
 
-       if ($_GET[STRATEGY] == "Random" ||$_GET[STRATEGY] == "random") {
+       if ($_GET[STRATEGY] == "Random" || $_GET[STRATEGY] == "random") {
            $info['pid'] = 'R' . uniqid();
-           file_put_contents(WRITE . $info['pid'] . 'txt', json_encode($board->board));
+           file_put_contents(WRITE . $info['pid'], json_encode($board->board));
        }
        else {
            $info['pid'] = 'S' . uniqid();
-           file_put_contents(WRITE . $info['pid'] . 'txt', json_encode($board->board));
+           file_put_contents(WRITE . $info['pid'], json_encode($board->board));
        }
    }
 
