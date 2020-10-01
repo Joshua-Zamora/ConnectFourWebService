@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e88a04b7-ae5e-4093-9e43-ae6bddae7a45" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,17 +39,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="ToolWindowPHP-CGI Server.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Data" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHP Script.index.php">
+  <component name="RunManager" selected="PHP Script.index.php (1)">
+    <configuration name="index.php (1)" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/play/index.php">
+      <method v="2" />
+    </configuration>
     <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/new/index.php">
       <method v="2" />
     </configuration>
@@ -40,6 +68,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.index.php (1)" />
         <item itemvalue="PHP Script.index.php" />
         <item itemvalue="PHP Script.torture.php" />
       </list>
@@ -61,54 +90,81 @@
       <workItem from="1601084998747" duration="2137000" />
       <workItem from="1601309469836" duration="1309000" />
       <workItem from="1601323091259" duration="10444000" />
-      <workItem from="1601392172957" duration="25830000" />
+      <workItem from="1601392172957" duration="26799000" />
+      <workItem from="1601487830972" duration="19809000" />
+      <workItem from="1601530754878" duration="686000" />
+      <workItem from="1601531552243" duration="3602000" />
+      <workItem from="1601566205989" duration="3479000" />
+      <workItem from="1601570055301" duration="3926000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="586" y="198" key="#Inspections" timestamp="1601357228740">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1601357228740" />
-    <state x="2907" y="-202" key="FileChooserDialogImpl" timestamp="1601328201212">
+    <state x="2970" y="-73" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601567326071">
+      <screen x="1920" y="-576" width="2560" height="1413" />
+    </state>
+    <state x="2970" y="-73" key="#com.intellij.fileTypes.FileTypeChooser/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601567326071" />
+    <state x="2907" y="-202" key="FileChooserDialogImpl" timestamp="1601534426754">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600894248839" />
-    <state x="2907" y="-202" key="FileChooserDialogImpl/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601328201212" />
-    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1601312605112">
+    <state x="2907" y="-202" key="FileChooserDialogImpl/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601534426754" />
+    <state width="2517" height="220" key="GridCell.Tab.0.bottom" timestamp="1601570047360">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="2517" height="400" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601312605112" />
-    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1601312605112">
+    <state width="2517" height="220" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601570047360" />
+    <state width="2517" height="220" key="GridCell.Tab.0.center" timestamp="1601570047360">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="2517" height="400" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601312605112" />
-    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1601312605112">
+    <state width="2517" height="220" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601570047360" />
+    <state width="2517" height="220" key="GridCell.Tab.0.left" timestamp="1601570047360">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="2517" height="400" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601312605112" />
-    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1601312605112">
+    <state width="2517" height="220" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601570047360" />
+    <state width="2517" height="220" key="GridCell.Tab.0.right" timestamp="1601570047360">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="2517" height="400" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601312605112" />
+    <state width="2517" height="220" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601570047360" />
     <state x="718" y="243" key="NewPhpClassDialog" timestamp="1601359622898">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="243" key="NewPhpClassDialog/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1601359622898" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1601407382296">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2979" y="26" key="NewPhpFileDialog" timestamp="1601567172191">
+      <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1601407382296" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1600828885968">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2979" y="26" key="NewPhpFileDialog/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601567172191" />
+    <state x="2535" y="-352" key="SettingsEditor" timestamp="1601566309179">
+      <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state x="461" y="165" key="SettingsEditor/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600828885968" />
+    <state x="2535" y="-352" key="SettingsEditor/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601566309179" />
+    <state x="2013" y="-483" width="2375" height="1215" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1601535179256">
+      <screen x="1920" y="-576" width="2560" height="1413" />
+    </state>
+    <state x="2013" y="-483" width="2375" height="1215" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601535179256" />
   </component>
 </project>
