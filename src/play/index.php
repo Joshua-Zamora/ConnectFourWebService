@@ -1,4 +1,9 @@
 <?php
+require_once "Board.php";
+require_once "Random.php";
+require_once "Smart.php";
+error_reporting(E_ALL & ~E_NOTICE);
+
 define('PID', "pid");
 define('MOVE', "move");
 define('WRITE', dirname(dirname(__FILE__))."/writable/");
@@ -8,6 +13,7 @@ main();
 function main() {
     $files = scandir(WRITE, 1);
     $acknowledgeMessage = array();
+    $acknowledgeMessage['response'] = true;
 
     if (!isset($_GET[PID])) {
         $acknowledgeMessage['response'] = false;
@@ -17,13 +23,13 @@ function main() {
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Move not specified";
     }
-    elseif (!array_search($_GET[PID], $files)) {
+    elseif (!in_array($_GET[PID], $files)) {
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Unknown pid";
     }
     elseif ($_GET[MOVE] < 0 || $_GET[MOVE] > 6) {
         $acknowledgeMessage['response'] = false;
-        $acknowledgeMessage['reason'] = "Invalid slot, ' . MOVE . '";
+        $acknowledgeMessage['reason'] = "Invalid slot, " . $_GET[MOVE];
     }
 
     if ($acknowledgeMessage['response'] == false) {
@@ -31,69 +37,64 @@ function main() {
         exit;
     }
 
+    $fileContents = file_get_contents(WRITE . $_GET[PID]);
+
     $board = new Board();
+    $board->board = json_decode($fileContents);
 
-    $board->board = json_decode(WRITE . $_GET[PID] . 'txt');
-
-    if (!$board->isValidCoordinate($_GET[MOVE])) {
+    if ($board->board[0][$_GET[MOVE]] != 0) {
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Column is full";
         echo json_encode($acknowledgeMessage);
         exit;
     }
 
-    $board->insertDisc($_GET[MOVE], 1);
-
-    $acknowledgeMessage['response'] = true;
     $acknowledgeMessage['ack_move'] = array();
-    $acknowledgeMessage['ack_move']['slot'] = $_GET[MOVE];
+    $acknowledgeMessage['ack_move']['slot'] = 'None';
     $acknowledgeMessage['ack_move']['isWin'] = false;
     $acknowledgeMessage['ack_move']['isDraw'] = false;
     $acknowledgeMessage['ack_move']['row'] = '[]';
 
-    if ($board->checkForWinningRow(1)) {
-        $acknowledgeMessage['ack_move']['isWin'] = true;
-
-        echo json_encode($acknowledgeMessage);
-        exit;
-    }
-    elseif ($board->boardIsFull()) {
-        $acknowledgeMessage['ack_move']['isDraw'] = true;
-
-        echo json_encode($acknowledgeMessage);
-        exit;
-    }
-
-    $random = new Random();
-    $smart = new Smart();
-
-    if ($_GET[PID][0] == "R")
-        $computedMove = $random->GetComputedCoordinates($board);
-    else
-        $computedMove = $smart->GetComputedCoordinates($board);
-
-    $board->insertDisc($computedMove, 2);
-
     $acknowledgeMessage['move'] = array();
-    $acknowledgeMessage['move']['slot'] = $computedMove;
+    $acknowledgeMessage['move']['slot'] = 'None';
     $acknowledgeMessage['move']['isWin'] = false;
     $acknowledgeMessage['move']['isDraw'] = false;
     $acknowledgeMessage['move']['row'] = '[]';
 
-    if ($board->checkForWinningRow(2)) {
-        $acknowledgeMessage['move']['isWin'] = true;
-
-        echo json_encode($acknowledgeMessage);
-        exit;
+    if ($board->checkForWinningRow(1)) {
+        $acknowledgeMessage['ack_move']['isWin'] = true;
     }
     elseif ($board->boardIsFull()) {
-        $acknowledgeMessage['move']['isDraw'] = false;
+        $acknowledgeMessage['ack_move']['isDraw'] = true;
+        $acknowledgeMessage['move']['isDraw'] = true;
+    }
+    elseif ($board->checkForWinningRow(2)) {
+        $acknowledgeMessage['move']['isWin'] = true;
+    }
+    else {
+        $board->insertDisc($_GET[MOVE], 1);
 
-        echo json_encode($acknowledgeMessage);
-        exit;
+        if ($board->checkForWinningRow(1)) {
+            $acknowledgeMessage['ack_move']['isWin'] = true;
+        }
+        else {
+            $random = new Random();
+            $smart = new Smart();
+
+            if ($_GET[PID][0] == "R")
+                $computedMove = $random->GetComputedCoordinates($board);
+            else
+                $computedMove = $smart->GetComputedCoordinates($board);
+
+            $board->insertDisc($computedMove, 2);
+
+            $acknowledgeMessage['ack_move']['slot'] = $_GET[MOVE];
+            $acknowledgeMessage['move']['slot'] = $computedMove;
+        }
+
+        file_put_contents(WRITE . $_GET[PID], json_encode($board->board));
     }
 
-    file_put_contents(WRITE . $_GET[PID] . 'txt', json_encode($board));
-
-    echo json_encode($acknowledgeMessage);
+    echo nl2br("\n" . json_encode($acknowledgeMessage) . "\n\n");
+    echo nl2br(json_encode($board->board));
 }
