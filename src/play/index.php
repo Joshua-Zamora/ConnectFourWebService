@@ -53,28 +53,28 @@ function main() {
     $acknowledgeMessage['ack_move']['slot'] = 'None';
     $acknowledgeMessage['ack_move']['isWin'] = false;
     $acknowledgeMessage['ack_move']['isDraw'] = false;
-    $acknowledgeMessage['ack_move']['row'] = '[]';
+    $acknowledgeMessage['ack_move']['winningRow'] = $board->checkForWinningRow(1);
 
     $acknowledgeMessage['move'] = array();
     $acknowledgeMessage['move']['slot'] = 'None';
     $acknowledgeMessage['move']['isWin'] = false;
     $acknowledgeMessage['move']['isDraw'] = false;
-    $acknowledgeMessage['move']['row'] = '[]';
+    $acknowledgeMessage['move']['winningRow'] = $board->checkForWinningRow(2);
 
-    if ($board->checkForWinningRow(1)) {
+    if ($acknowledgeMessage['ack_move']['winningRow'] != false) {
         $acknowledgeMessage['ack_move']['isWin'] = true;
     }
     elseif ($board->boardIsFull()) {
         $acknowledgeMessage['ack_move']['isDraw'] = true;
         $acknowledgeMessage['move']['isDraw'] = true;
     }
-    elseif ($board->checkForWinningRow(2)) {
+    elseif ($acknowledgeMessage['move']['winningRow'] != false) {
         $acknowledgeMessage['move']['isWin'] = true;
     }
     else {
         $board->insertDisc($_GET[MOVE], 1);
 
-        if ($board->checkForWinningRow(1)) {
+        if ($acknowledgeMessage['ack_move']['winningRow'] != false) {
             $acknowledgeMessage['ack_move']['isWin'] = true;
         }
         else {
