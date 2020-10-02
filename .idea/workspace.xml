@@ -59,8 +59,11 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHP Script.index.php (1)">
+  <component name="RunManager" selected="PHP Script.torture.php">
     <configuration name="index.php (1)" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/play/index.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.php (2)" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/info/index.php">
       <method v="2" />
     </configuration>
     <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/new/index.php">
@@ -71,9 +74,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHP Script.index.php (1)" />
-        <item itemvalue="PHP Script.index.php" />
         <item itemvalue="PHP Script.torture.php" />
+        <item itemvalue="PHP Script.index.php (2)" />
+        <item itemvalue="PHP Script.index.php" />
+        <item itemvalue="PHP Script.index.php (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +105,8 @@
       <workItem from="1601570055301" duration="5172000" />
       <workItem from="1601575641161" duration="198000" />
       <workItem from="1601580794880" duration="691000" />
-      <workItem from="1601595423427" duration="9610000" />
+      <workItem from="1601595423427" duration="11130000" />
+      <workItem from="1601616610288" duration="7557000" />
     </task>
     <servers />
   </component>
@@ -138,26 +143,26 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600894248839" />
     <state x="2907" y="-202" key="FileChooserDialogImpl/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601534426754" />
-    <state width="1536" height="280" key="GridCell.Tab.0.bottom" timestamp="1601575838644">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1601624075220">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="1536" height="280" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601575838644" />
-    <state width="1536" height="280" key="GridCell.Tab.0.center" timestamp="1601575838644">
+    <state width="2517" height="400" key="GridCell.Tab.0.bottom/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601624075220" />
+    <state width="2517" height="400" key="GridCell.Tab.0.center" timestamp="1601624075220">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="1536" height="280" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601575838644" />
-    <state width="1536" height="280" key="GridCell.Tab.0.left" timestamp="1601575838644">
+    <state width="2517" height="400" key="GridCell.Tab.0.center/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601624075220" />
+    <state width="2517" height="400" key="GridCell.Tab.0.left" timestamp="1601624075220">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="1536" height="280" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601575838644" />
-    <state width="1536" height="280" key="GridCell.Tab.0.right" timestamp="1601575838644">
+    <state width="2517" height="400" key="GridCell.Tab.0.left/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601624075220" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right" timestamp="1601624075220">
       <screen x="1920" y="-576" width="2560" height="1413" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@0.0.1920.1040" timestamp="1600839094824" />
-    <state width="1536" height="280" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601575838644" />
+    <state width="2517" height="400" key="GridCell.Tab.0.right/1920.-576.2560.1413/0.0.1920.1040@1920.-576.2560.1413" timestamp="1601624075220" />
     <state x="718" y="243" key="NewPhpClassDialog" timestamp="1601359622898">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
