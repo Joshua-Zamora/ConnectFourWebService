@@ -5,7 +5,7 @@ class Board
     public $board;
 
     function __construct() {
-        $this->board = array(
+        $this->board = array(           // Constructs a 6 x 7 2d array
             array(0, 0, 0, 0, 0, 0, 0),
             array(0, 0, 0, 0, 0, 0, 0),
             array(0, 0, 0, 0, 0, 0, 0),
@@ -26,7 +26,7 @@ class Board
 
     function boardIsFull() {
         for ($xCoordinate = 0; $xCoordinate < 7; $xCoordinate++)
-            if ($this->board[0][$xCoordinate] == 0) return false;
+            if ($this->board[0][$xCoordinate] == 0) return false;   // If the top of the board is occupied
 
         return true;
     }

@@ -10,11 +10,11 @@ function main() {
     $strategies = array("Smart"=> 0, "Random"=> 1, "smart" => 2, "random" => 3); // supported strategies
     $info = array();
 
-    if (!isset($_GET[STRATEGY])) {
+    if (!isset($_GET[STRATEGY])) {      // Checks if a strategy was entered
         $info['response'] = false;
         $info['reason'] = "Strategy not specified";
     }
-    elseif (!array_key_exists($_GET[STRATEGY], $strategies)) {
+    elseif (!array_key_exists($_GET[STRATEGY], $strategies)) {      // Checks if given strategy is defined
         $info['response'] = false;
         $info['reason'] = "Strategy unknown";
     }
@@ -22,7 +22,7 @@ function main() {
        $info['response'] = true;
        $board = new Board();
 
-       if ($_GET[STRATEGY] == "Random" || $_GET[STRATEGY] == "random") {
+       if ($_GET[STRATEGY] == "Random" || $_GET[STRATEGY] == "random") {    // Makes file based on strategy
            $info['pid'] = 'R' . uniqid();
            file_put_contents(WRITE . $info['pid'], json_encode($board->board));
        }

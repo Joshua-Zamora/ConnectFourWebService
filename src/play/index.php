@@ -15,19 +15,19 @@ function main() {
     $acknowledgeMessage = array();
     $acknowledgeMessage['response'] = true;
 
-    if (!isset($_GET[PID])) {
+    if (!isset($_GET[PID])) {       // Checks if pid is defined
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Pid not specified";
     }
-    elseif (!isset($_GET[MOVE])) {
+    elseif (!isset($_GET[MOVE])) {      // Checks if move is defined
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Move not specified";
     }
-    elseif (!in_array($_GET[PID], $files)) {
+    elseif (!in_array($_GET[PID], $files)) {    // Checks if pid is located in writable directory
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Unknown pid";
     }
-    elseif ($_GET[MOVE] < 0 || $_GET[MOVE] > 6) {
+    elseif ($_GET[MOVE] < 0 || $_GET[MOVE] > 6) {   // Checks for valid move
         $acknowledgeMessage['response'] = false;
         $acknowledgeMessage['reason'] = "Invalid slot, " . $_GET[MOVE];
     }
@@ -37,10 +37,10 @@ function main() {
         exit;
     }
 
-    $fileContents = file_get_contents(WRITE . $_GET[PID]);
+    $fileContents = file_get_contents(WRITE . $_GET[PID]);  // Retrieves pid file contents
 
     $board = new Board();
-    $board->board = json_decode($fileContents);
+    $board->board = json_decode($fileContents); // decodes 2d array to board object
 
     if ($board->board[0][$_GET[MOVE]] != 0) {
         $acknowledgeMessage['response'] = false;
@@ -98,11 +98,8 @@ function main() {
                 $acknowledgeMessage['move']['isWin'] = true;
         }
 
-        file_put_contents(WRITE . $_GET[PID], json_encode($board->board));
+        file_put_contents(WRITE . $_GET[PID], json_encode($board->board));  // Writes array back into file
     }
 
-    echo nl2br("\n" . json_encode($acknowledgeMessage) . "\n\n");
-
-    foreach ($board->board as $row)
-        echo nl2br(json_encode($row) . "\n");
+    echo nl2br("\n" . json_encode($acknowledgeMessage) . "\n\n");   // prints message to user
 }

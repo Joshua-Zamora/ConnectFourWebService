@@ -170,7 +170,7 @@ class Smart extends Strategy
 
         do {
             $xCoordinate = rand(0, 6);
-        } while ($board->board[0][$xCoordinate] != 0);
+        } while ($board->board[0][$xCoordinate] != 0);  // If all cases above fail a random number is drawn
 
         return $xCoordinate;
     }
