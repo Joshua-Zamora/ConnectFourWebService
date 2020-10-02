@@ -74,6 +74,8 @@ function main() {
     else {
         $board->insertDisc($_GET[MOVE], 1);
 
+        $acknowledgeMessage['ack_move']['winningRow'] = $board->checkForWinningRow(1);
+
         if ($acknowledgeMessage['ack_move']['winningRow'] != false) {
             $acknowledgeMessage['ack_move']['isWin'] = true;
         }
