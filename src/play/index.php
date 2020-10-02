@@ -53,31 +53,35 @@ function main() {
     $acknowledgeMessage['ack_move']['slot'] = 'None';
     $acknowledgeMessage['ack_move']['isWin'] = false;
     $acknowledgeMessage['ack_move']['isDraw'] = false;
-    $acknowledgeMessage['ack_move']['winningRow'] = $board->checkForWinningRow(1);
+    $acknowledgeMessage['ack_move']['row'] = !$board->checkForWinningRow(1) ? [] : $board->checkForWinningRow(1);
 
     $acknowledgeMessage['move'] = array();
     $acknowledgeMessage['move']['slot'] = 'None';
     $acknowledgeMessage['move']['isWin'] = false;
     $acknowledgeMessage['move']['isDraw'] = false;
-    $acknowledgeMessage['move']['winningRow'] = $board->checkForWinningRow(2);
+    $acknowledgeMessage['move']['row'] = !$board->checkForWinningRow(2) ? [] : $board->checkForWinningRow(2);
 
-    if ($acknowledgeMessage['ack_move']['winningRow'] != false) {
+    if ($acknowledgeMessage['ack_move']['row'] != false) {
         $acknowledgeMessage['ack_move']['isWin'] = true;
+        unlink(WRITE . $_GET[PID]);
     }
     elseif ($board->boardIsFull()) {
         $acknowledgeMessage['ack_move']['isDraw'] = true;
         $acknowledgeMessage['move']['isDraw'] = true;
+        unlink(WRITE . $_GET[PID]);
     }
-    elseif ($acknowledgeMessage['move']['winningRow'] != false) {
+    elseif ($acknowledgeMessage['move']['row'] != false) {
         $acknowledgeMessage['move']['isWin'] = true;
+        unlink(WRITE . $_GET[PID]);
     }
     else {
         $board->insertDisc($_GET[MOVE], 1);
 
-        $acknowledgeMessage['ack_move']['winningRow'] = $board->checkForWinningRow(1);
+        $acknowledgeMessage['ack_move']['row'] = !$board->checkForWinningRow(1) ? [] : $board->checkForWinningRow(1);
 
-        if ($acknowledgeMessage['ack_move']['winningRow'] != false) {
+        if ($acknowledgeMessage['ack_move']['row'] != false) {
             $acknowledgeMessage['ack_move']['isWin'] = true;
+            unlink(WRITE . $_GET[PID]);
         }
         else {
             $random = new Random();
@@ -92,13 +96,16 @@ function main() {
 
             $acknowledgeMessage['ack_move']['slot'] = $_GET[MOVE];
             $acknowledgeMessage['move']['slot'] = $computedMove;
-            $acknowledgeMessage['move']['winningRow'] = $board->checkForWinningRow(2);
+            $acknowledgeMessage['move']['row'] = !$board->checkForWinningRow(2) ? [] : $board->checkForWinningRow(2);
 
-            if ($acknowledgeMessage['move']['winningRow'] != false)
+            if ($acknowledgeMessage['move']['row'] != false) {
                 $acknowledgeMessage['move']['isWin'] = true;
+                unlink(WRITE . $_GET[PID]);
+            }
+            else {
+                file_put_contents(WRITE . $_GET[PID], json_encode($board->board));  // Writes array back into file
+            }
         }
-
-        file_put_contents(WRITE . $_GET[PID], json_encode($board->board));  // Writes array back into file
     }
 
     echo nl2br("\n" . json_encode($acknowledgeMessage) . "\n\n");   // prints message to user
