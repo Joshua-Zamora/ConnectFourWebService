@@ -1,35 +1,30 @@
 <?php   // BY: JOSHUA ZAMORA AND AIRAM MARTINEZ
+
 require dirname(dirname(__FILE__)) . "/play/Board.php";
 
+error_reporting(E_ALL & ~E_NOTICE);     // Hides notices
+
 define('WRITE', dirname(dirname(__FILE__))."/writable/");
-define('STRATEGY', "strategy");
+define('STRATEGY', $_GET["strategy"]);
 
 main();
 
 function main() {
-    $strategies = array("Smart"=> 0, "Random"=> 1, "smart" => 2, "random" => 3); // supported strategies
-    $info = array();
+    $strategies = array("Smart"=> 0, "Random"=> 1); // supported strategies
+    $info = array("response" => false);
 
-    if (!isset($_GET[STRATEGY])) {      // Checks if a strategy was entered
-        $info['response'] = false;
+    if (STRATEGY == "")
         $info['reason'] = "Strategy not specified";
-    }
-    elseif (!array_key_exists($_GET[STRATEGY], $strategies)) {      // Checks if given strategy is defined
-        $info['response'] = false;
+    elseif (!array_key_exists(STRATEGY, $strategies))   // checks if given strategy exists
         $info['reason'] = "Strategy unknown";
-    }
     else {
-       $info['response'] = true;
-       $board = new Board();
+        $info['response'] = true;
+        $info['pid'] = uniqid();
 
-       if ($_GET[STRATEGY] == "Random" || $_GET[STRATEGY] == "random") {    // Makes file based on strategy
-           $info['pid'] = 'R' . uniqid();
-           file_put_contents(WRITE . $info['pid'], json_encode($board->board));
-       }
-       else {
-           $info['pid'] = 'S' . uniqid();
-           file_put_contents(WRITE . $info['pid'], json_encode($board->board));
-       }
+        $board = new Board();
+
+        file_put_contents(WRITE . $info['pid'],
+            json_encode(array("strategy" => STRATEGY, "board" => $board->board)));
    }
 
     echo json_encode($info);
