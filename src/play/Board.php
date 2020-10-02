@@ -31,14 +31,14 @@ class Board
         return true;
     }
 
-    function checkForWinningRow($player) {
+    function winningRow($player) {
         for ($i = 0; $i < 6; $i++) {     // Checks Horizontal groups
             for ($j = 0; $j < 4; $j++) {
                 if ($this->board[$i][$j    ] == $player &&
                     $this->board[$i][$j + 1] == $player &&
                     $this->board[$i][$j + 2] == $player &&
                     $this->board[$i][$j + 3] == $player)
-                    return '['.$i.','.$j.','.$i.','.($j+1).','.$i.','.($j+2).','.$i.','.($j+3).']';
+                    return array($i, $j, $i, ($j+1), $i, ($j+2), $i, ($j+3));
             }
         }
 
@@ -48,7 +48,7 @@ class Board
                     $this->board[$i + 1][$j] == $player &&
                     $this->board[$i + 2][$j] == $player &&
                     $this->board[$i + 3][$j] == $player)
-                    return '['.$i.','.$j.','.$i.','.($j+1).','.$i.','.($j+2).','.$i.','.($j+3).']';
+                    return array($i, $j, $i, ($j+1), $i, ($j+2), $i, ($j+3));
             }
         }
 
@@ -58,7 +58,7 @@ class Board
                     $this->board[$i - 1][$j + 1] == $player &&
                     $this->board[$i - 2][$j + 2] == $player &&
                     $this->board[$i - 3][$j + 3] == $player)
-                    return '['.$i.','.$j.','.$i.','.($j+1).','.$i.','.($j+2).','.$i.','.($j+3).']';
+                    return array($i, $j, $i, ($j+1), $i, ($j+2), $i, ($j+3));
             }
         }
 
@@ -68,10 +68,10 @@ class Board
                     $this->board[$i - 1][$j - 1] == $player &&
                     $this->board[$i - 2][$j - 2] == $player &&
                     $this->board[$i - 3][$j - 3] == $player)
-                    return '['.$i.','.$j.','.$i.','.($j-1).','.$i.','.($j-2).','.$i.','.($j-3).']';
+                    return array($i, $j, $i, ($j-1), $i, ($j-2), $i, ($j-3));
             }
         }
 
-        return false;
+        return array();
     }
 }
