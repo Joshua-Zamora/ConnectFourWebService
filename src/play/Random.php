@@ -3,7 +3,7 @@
 require_once "Strategy.php";
 
 class Random extends Strategy {
-    function GetComputedCoordinates($board) {
+    function getXCoordinate($board) {
 
         do {
             $xCoordinate = rand(0, 6);

@@ -4,7 +4,7 @@ require_once "Strategy.php";
 
 class Smart extends Strategy
 {
-    function GetComputedCoordinates($board)
+    function getXCoordinate($board)
     {
         for ($i = 0; $i < 6; $i++) {     // Checks Attacking Horizontal groups
             for ($j = 0; $j < 4; $j++) {
