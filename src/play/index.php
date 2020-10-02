@@ -1,4 +1,4 @@
-<?php
+<?php   // BY: JOSHUA ZAMORA AND AIRAM MARTINEZ
 require_once "Board.php";
 require_once "Random.php";
 require_once "Smart.php";

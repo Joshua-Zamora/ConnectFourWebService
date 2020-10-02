@@ -1,4 +1,4 @@
-<?php
+<?php   // BY: JOSHUA ZAMORA AND AIRAM MARTINEZ
 
 require_once "Strategy.php";
 

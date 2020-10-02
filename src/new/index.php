@@ -1,4 +1,4 @@
-<?php
+<?php   // BY: JOSHUA ZAMORA AND AIRAM MARTINEZ
 require dirname(dirname(__FILE__)) . "/play/Board.php";
 
 define('WRITE', dirname(dirname(__FILE__))."/writable/");

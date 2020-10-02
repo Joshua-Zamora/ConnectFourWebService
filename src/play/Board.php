@@ -1,4 +1,4 @@
-<?php
+<?php   // BY: JOSHUA ZAMORA AND AIRAM MARTINEZ
 
 class Board
 {
@@ -16,7 +16,7 @@ class Board
     }
 
     function insertDisc($xCoordinate, $player) {
-        for ($yCoordinate = 5; $yCoordinate > -1; $yCoordinate--) {
+        for ($yCoordinate = 5; $yCoordinate > -1; $yCoordinate--) { // Inserts disc at bottom index of column
             if ($this->board[$yCoordinate][$xCoordinate] == 0) {
                 $this->board[$yCoordinate][$xCoordinate] = $player;
                 return;
