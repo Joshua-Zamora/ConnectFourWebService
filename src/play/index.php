@@ -90,6 +90,10 @@ function main() {
 
             $acknowledgeMessage['ack_move']['slot'] = $_GET[MOVE];
             $acknowledgeMessage['move']['slot'] = $computedMove;
+            $acknowledgeMessage['move']['winningRow'] = $board->checkForWinningRow(2);
+
+            if ($acknowledgeMessage['move']['winningRow'] != false)
+                $acknowledgeMessage['move']['isWin'] = true;
         }
 
         file_put_contents(WRITE . $_GET[PID], json_encode($board->board));
